@@ -22,4 +22,6 @@ export default {
 }
 </script>
 
-<style lang="stylus"></style>
+<style lang="stylus">
+@import './assets/styles/reset.styl'
+</style>
