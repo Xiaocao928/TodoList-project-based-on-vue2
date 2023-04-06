@@ -17,12 +17,12 @@ export default {
   h1
     margin:20px auto
     width 400px
-    font-family: 'Alkatra', cursive;
+    font-family: 'Alkatra', cursive
     font-size 100px
-    color:#47737e
+    color:#88b2b6
     font-weight :200
     text-shadow:5px 5px 10px rgb(0,0,0,0.3)
-    // background-image: linear-gradient(90deg,#bdc9bd 0%,#1f3b3f 100%)
+    // background-image: linear-gradient(90deg,red 0%,green 100%)
     // -webkit-background-clip: text
-    // -webkit-text-fill-color: transparent
+    // color: transparent
 </style>
