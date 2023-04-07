@@ -4,8 +4,19 @@
       class="add-todo"
       type="text"
       placeholder="Press Enter to add a todo ↵"
+      autofocus
+      v-model.lazy.trim="content"
+      @keyup.enter="handleAdd"
     />
-    <todo-item v-for="todo in todos" :key="todo.id" :todo="todo"></todo-item>
+    <div class="todo-list">
+      <todo-item
+        v-for="todo in todos"
+        :key="todo.id"
+        :todo="todo"
+        @change="handleChange"
+        @update="handleUpdate"
+      ></todo-item>
+    </div>
 
     <todo-info></todo-info>
   </div>
@@ -22,18 +33,52 @@ export default {
   },
   data() {
     return {
-      todos: [
-        { id: 1, content: '代办1', completed: false },
-        { id: 2, content: '代办2', completed: true },
-        { id: 3, content: '代办3', completed: false },
-      ],
+      todos: [],
+      content: '',
     }
   },
   created() {
-    this.$http.get('http://localhost:3000/todos').then(res => {
-      console.log(res)
-      this.todos = res.data
-    })
+    this.getTodos()
+  },
+  methods: {
+    getTodos() {
+      this.$http.get('http://localhost:3000/todos').then(res => {
+        // console.log(res)
+        this.todos = res.data
+      })
+    },
+    handleAdd() {
+      if (this.content == '') {
+        alert('请输入内容')
+        return
+      }
+      this.$http
+        .post('http://localhost:3000/todos', {
+          content: this.content,
+          completed: false,
+        })
+        .then(res => {
+          this.content = ''
+          this.getTodos()
+        })
+    },
+    handleChange(id, checked) {
+      this.$http
+        .patch(`http://localhost:3000/todos/${id}`, {
+          completed: checked,
+        })
+        .then(res => {
+          console.log(res)
+          this.getTodos()
+        })
+    },
+    handleUpdate(id, value) {
+      this.$http
+        .patch(`http://localhost:3000/todos/${id}`, { content: value })
+        .then(res => {
+          this.getTodos()
+        })
+    },
   },
 }
 </script>
@@ -61,4 +106,19 @@ export default {
        font-family:'Alkatra', cursive
        box-sizing: border-box
        clearDefault()
+.todo-list
+  overflow: hidden
+  margin top 10px
+  height 250px
+  transition: all 0.3s
+  &::-webkit-scrollbar
+    width 8px
+  &::-webkit-scrollbar-thumb
+    background: #85afb1
+    border-radius 5px
+  &::-webkit-scrollbar-track
+    background: rgba(255,255,255,0.5)
+    border-radius 5px
+  &:hover
+    overflow-y:scroll
 </style>
