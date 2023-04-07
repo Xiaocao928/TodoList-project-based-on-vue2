@@ -11,17 +11,25 @@ export default {
 </script>
 
 <style lang="stylus">
-@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400;600&display=swap');
+
 .main-header
   text-align:center
+
   h1
-    margin:20px auto
+    margin:30px auto
     width 400px
-    font-family: 'Alkatra', cursive
+    font-family: 'english'
     font-size 100px
     color:#88b2b6
     font-weight :200
     text-shadow:5px 5px 10px rgb(0,0,0,0.3)
+    animation: rainbow 2s alternate infinite forwards;
+@keyframes rainbow
+    0%
+        color: #97bdbe
+    100%
+        color: #6f9aa1
+
     // background-image: linear-gradient(90deg,red 0%,green 100%)
     // -webkit-background-clip: text
     // color: transparent
