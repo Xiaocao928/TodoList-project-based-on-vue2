@@ -29,6 +29,12 @@ export default {
       ],
     }
   },
+  created() {
+    this.$http.get('http://localhost:3000/todos').then(res => {
+      console.log(res)
+      this.todos = res.data
+    })
+  },
 }
 </script>
 

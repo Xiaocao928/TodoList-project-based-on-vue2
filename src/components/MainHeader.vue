@@ -23,7 +23,7 @@ export default {
     color:#88b2b6
     font-weight :200
     text-shadow:5px 5px 10px rgb(0,0,0,0.3)
-    animation: rainbow 2s alternate infinite forwards;
+    animation: rainbow 1s alternate infinite forwards;
 @keyframes rainbow
     0%
         color: #97bdbe
