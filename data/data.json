@@ -8,12 +8,12 @@
     {
       "id": 2,
       "content": "睡觉,sl",
-      "completed": false
+      "completed": true
     },
     {
       "id": 3,
       "content": "学习 study",
-      "completed": false
+      "completed": true
     },
     {
       "content": "聊天",

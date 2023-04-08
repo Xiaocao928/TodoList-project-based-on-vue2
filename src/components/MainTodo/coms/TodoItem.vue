@@ -70,7 +70,7 @@ export default {
     align-items: center
     margin:0 15px
     margin-top: 10px
-    padding: 10px
+    padding: 3px
     border-radius: 50px
     font-size:24px
     background-color: rgba(255,255,255,0.3)
@@ -78,15 +78,16 @@ export default {
     &:hover
       border:3px dashed #7ea9af
       button::after
-        content: url('~images/delete.svg')
+        content: url('~images/delete1.svg')
     input[type='checkbox']
       width 40px
-      height 40px
+      height 32px
+      margin-left:10px
       clearDefault()
       &::after
-       content: url('~images/unchecked.svg')
+       content: url('~images/unchecked1.svg')
       &:checked::after
-        content: url('~images/checked.svg')
+        content: url('~images/checked1.svg')
     label
       flex:1
       padding-left: 10px

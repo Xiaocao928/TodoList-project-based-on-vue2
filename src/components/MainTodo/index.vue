@@ -6,6 +6,7 @@
         <the-music></the-music>
       </div>
       <the-weather></the-weather>
+      <daily-sentence></daily-sentence>
     </div>
     <div class="menu-right">
       <input
@@ -36,6 +37,7 @@ import TodoInfo from './coms/TodoInfo'
 import TheTime from './coms/TheTime'
 import TheWeather from './coms/TheWeather'
 import TheMusic from './coms/TheMusic'
+import DailySentence from './coms/DailySentence'
 export default {
   name: 'MainTodo',
   components: {
@@ -44,6 +46,7 @@ export default {
     TheTime,
     TheWeather,
     TheMusic,
+    DailySentence,
   },
   data() {
     return {
@@ -124,7 +127,7 @@ export default {
       .add-todo
         width: 95%
         margin:10px 15px
-        padding 16px 16px 16px 36px
+        padding 13px 13px 13px 36px
         background-color: rgba(255,255,255,0.3)
         font-size: 24px
         font-weight: 300

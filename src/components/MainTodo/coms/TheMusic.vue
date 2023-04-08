@@ -32,7 +32,7 @@ export default {
   name: 'TheMusic',
   data() {
     return {
-      music: { auther: '', mp3url: '', name: '', picUrl: '' },
+      music: { auther: '', mp3url: '', name: '', picUrl: '', status: '' },
       audio: null,
     }
   },
@@ -41,33 +41,43 @@ export default {
     this.loadSong()
   },
   methods: {
-    loadSong() {
-      this.$http
-        .get('https://api.vvhan.com/api/rand.music?type=json&sort=热歌榜')
-        .then(res => {
-          console.log(res.data)
-          this.music.auther = res.data.info.auther
-          this.music.mp3url = res.data.info.mp3url
-          console.log(this.music.mp3url)
-          this.music.name = res.data.info.name
-          this.music.picUrl = res.data.info.picUrl
-        })
-        .catch(error => {
-          console.error(error)
-        })
+    async loadSong() {
+      try {
+        const res = await this.$http.get(
+          'https://api.vvhan.com/api/rand.music?type=json&sort=热歌榜'
+        )
+        console.log(res.data)
+        const data = res.data
+        this.music.auther = data.info.auther
+        this.music.mp3url = data.info.mp3url
+        console.log(this.music.mp3url)
+        this.music.name = data.info.name
+        this.music.picUrl = data.info.picUrl
+        this.music.status = data.success
+        console.log(this.music.status)
+      } catch (error) {
+        console.error(error)
+        this.music.status = false
+      }
     },
-    play() {
-      this.audio.play()
-      //   console.log(this)
-
-      //   audio.play()
+    async play() {
+      try {
+        await this.audio.play()
+      } catch (error) {
+        console.error(error)
+      }
     },
-    pause() {
-      this.audio.pause()
+    async pause() {
+      try {
+        await this.audio.pause()
+      } catch (error) {
+        console.error(error)
+      }
     },
-    next() {
-      this.loadSong()
-      this.audio.play()
+    async next() {
+      this.loadSong().then(() => {
+        this.play()
+      })
     },
   },
 }
@@ -113,7 +123,10 @@ export default {
           width 35px
           height 35px
           clearDefault()
-          font-size: 20px
+
           color: whitesmoke
           background-color: rgba(255,255,255,0)
+          i
+            color:#457079
+            font-size: 20px
 </style>

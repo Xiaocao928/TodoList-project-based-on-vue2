@@ -24,11 +24,11 @@
     </div>
     <div class="sub">
       <div class="type">
-        <i class="iconfont icon-tooltip"></i>
+        <i class="iconfont icon-shouye"></i>
         {{ type }}
       </div>
       <div class="tip">
-        <i class="iconfont icon-shouye"></i>
+        <i class="iconfont icon-tooltip"></i>
         {{ tip }}
       </div>
     </div>

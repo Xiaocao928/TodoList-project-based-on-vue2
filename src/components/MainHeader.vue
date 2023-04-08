@@ -19,12 +19,12 @@ export default {
     margin:30px auto
     width 400px
     font-family: 'english'
-    font-size 100px
+    font-size 80px
     color:#88b2b6
     font-weight :200
     text-shadow:5px 5px 10px rgb(0,0,0,0.3)
-    animation: rainbow 1s alternate infinite forwards;
-@keyframes rainbow
+    animation: breathing-light 1s alternate infinite forwards;
+@keyframes breathing-light
     0%
         color: #97bdbe
     100%
