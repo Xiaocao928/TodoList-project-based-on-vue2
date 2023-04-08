@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <main-header></main-header>
-    <main-todo></main-todo>
+    <main-todo>
+      <div>hello word</div>
+    </main-todo>
     <main-footer></main-footer>
   </div>
 </template>

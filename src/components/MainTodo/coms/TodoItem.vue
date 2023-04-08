@@ -63,7 +63,7 @@ export default {
 
 <style lang="stylus">
 @import '~styles/mixins.styl'
-@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400;600&family=Zhi+Mang+Xing&display=swap');
+
 .todo-item
     display: flex
     justify-content: space-between

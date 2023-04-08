@@ -1,35 +1,49 @@
 <template>
   <div class="main-todo">
-    <input
-      class="add-todo"
-      type="text"
-      placeholder="Press Enter to add a todo ↵"
-      autofocus
-      v-model.lazy.trim="content"
-      @keyup.enter="handleAdd"
-    />
-    <div class="todo-list">
-      <todo-item
-        v-for="todo in todos"
-        :key="todo.id"
-        :todo="todo"
-        @change="handleChange"
-        @update="handleUpdate"
-      ></todo-item>
+    <div class="menu-left">
+      <div class="menu-header">
+        <the-time class="clock"></the-time>
+        <the-music></the-music>
+      </div>
+      <the-weather></the-weather>
     </div>
-
-    <todo-info></todo-info>
+    <div class="menu-right">
+      <input
+        class="add-todo"
+        type="text"
+        placeholder="Press Enter to add a todo ↵"
+        autofocus
+        v-model.lazy.trim="content"
+        @keyup.enter="handleAdd"
+      />
+      <div class="todo-list">
+        <todo-item
+          v-for="todo in todos"
+          :key="todo.id"
+          :todo="todo"
+          @change="handleChange"
+          @update="handleUpdate"
+        ></todo-item>
+      </div>
+      <todo-info></todo-info>
+    </div>
   </div>
 </template>
 
 <script>
 import TodoItem from './coms/TodoItem'
 import TodoInfo from './coms/TodoInfo'
+import TheTime from './coms/TheTime'
+import TheWeather from './coms/TheWeather'
+import TheMusic from './coms/TheMusic'
 export default {
   name: 'MainTodo',
   components: {
     TodoItem,
     TodoInfo,
+    TheTime,
+    TheWeather,
+    TheMusic,
   },
   data() {
     return {
@@ -86,39 +100,52 @@ export default {
 <style lang="stylus">
 @import '~styles/mixins.styl'
 .main-todo
-    width 600px
+    width 90%
     margin 0 auto
+    display: flex
     border-top: rgba(255,255,255,0.2)
     border-right: rgba(255,255,255,0.2)
     background-color: rgba(255,255,255,0.2)
-    backdrop-filter: blur(5px)
+    -webkit-backdrop-filter:blur(5px)
     border-radius: 20px
     box-shadow: 0 15px 20px rgba(255,255,255,0.2)
-    .add-todo
-       width: 95%
-       margin:10px 15px
-       padding 16px 16px 16px 36px
-       background-color: rgba(255,255,255,0.3)
-       font-size: 24px
-       font-weight: 300
-       color: #333
-       border-radius: 50px
-       font-family:'Alkatra', cursive
-       box-sizing: border-box
-       clearDefault()
-.todo-list
-  overflow: hidden
-  margin top 10px
-  height 250px
-  transition: all 0.3s
-  &::-webkit-scrollbar
-    width 8px
-  &::-webkit-scrollbar-thumb
-    background: #85afb1
-    border-radius 5px
-  &::-webkit-scrollbar-track
-    background: rgba(255,255,255,0.5)
-    border-radius 5px
-  &:hover
-    overflow-y:scroll
+    .menu-left
+      flex: 5
+      .menu-header
+        display: flex
+        .time
+          flex: 1
+        .music
+          flex: 1
+      // background-color pink
+    .menu-right
+      flex: 5
+      // background-color: green
+      .add-todo
+        width: 95%
+        margin:10px 15px
+        padding 16px 16px 16px 36px
+        background-color: rgba(255,255,255,0.3)
+        font-size: 24px
+        font-weight: 300
+        color: #333
+        border-radius: 50px
+        font-family:'Alkatra', cursive
+        box-sizing: border-box
+        clearDefault()
+      .todo-list
+        overflow: hidden
+        margin top 10px
+        height 250px
+        transition: all 0.3s
+        &::-webkit-scrollbar
+          width 8px
+        &::-webkit-scrollbar-thumb
+          background: #85afb1
+          border-radius 5px
+        &::-webkit-scrollbar-track
+          background: rgba(255,255,255,0.5)
+          border-radius 5px
+        &:hover
+          overflow-y:scroll
 </style>
