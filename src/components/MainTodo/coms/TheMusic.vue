@@ -4,7 +4,12 @@
       <span>{{ music.name }}--{{ music.auther }}</span>
     </div>
     <div class="panel">
-      <img :src="music.picUrl" alt="" class="pic" />
+      <img
+        :src="music.picUrl"
+        alt=""
+        :class="{ 'pic-stop': true, 'pic-start': active }"
+        :style="{ animationPlayState: RotateState }"
+      />
       <audio
         ref="audioRef"
         :src="music.mp3url"
@@ -14,11 +19,11 @@
       ></audio>
     </div>
     <div class="control">
-      <button @click="play" class="item">
-        <i class="iconfont icon-24gl-playCircle"></i>
+      <button @click="next" class="item">
+        <i class="iconfont icon-shangyishoushangyige"></i>
       </button>
       <button @click="pause" class="item">
-        <i class="iconfont icon-zanting"> </i>
+        <i :class="PlayState"> </i>
       </button>
       <button @click="next" class="item">
         <i class="iconfont icon-xiayigexiayishou"></i>
@@ -34,7 +39,14 @@ export default {
     return {
       music: { auther: '', mp3url: '', name: '', picUrl: '', status: '' },
       audio: null,
+      active: false,
+      RotateState: 'paused',
     }
+  },
+  computed: {
+    PlayState() {
+      return ['iconfont', this.active ? 'icon-zanting' : 'icon-24gl-playCircle']
+    },
   },
   mounted() {
     this.audio = this.$refs.audioRef
@@ -46,15 +58,15 @@ export default {
         const res = await this.$http.get(
           'https://api.vvhan.com/api/rand.music?type=json&sort=热歌榜'
         )
-        console.log(res.data)
+        //console.log(res.data)
         const data = res.data
         this.music.auther = data.info.auther
         this.music.mp3url = data.info.mp3url
-        console.log(this.music.mp3url)
+        //console.log(this.music.mp3url)
         this.music.name = data.info.name
         this.music.picUrl = data.info.picUrl
         this.music.status = data.success
-        console.log(this.music.status)
+        //console.log(this.music.status)
       } catch (error) {
         console.error(error)
         this.music.status = false
@@ -69,7 +81,14 @@ export default {
     },
     async pause() {
       try {
-        await this.audio.pause()
+        if (this.active) {
+          await this.audio.pause()
+          this.RotateState = 'paused'
+        } else {
+          await this.audio.play()
+          this.RotateState = 'running'
+        }
+        this.active = !this.active
       } catch (error) {
         console.error(error)
       }
@@ -77,6 +96,7 @@ export default {
     async next() {
       this.loadSong().then(() => {
         this.play()
+        this.active = true
       })
     },
   },
@@ -84,7 +104,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import 'http://at.alicdn.com/t/c/font_4003533_vackieklct.css'
+@import 'http://at.alicdn.com/t/c/font_4003533_idokka110x.css'
 @import '~styles/mixins.styl'
 .music
 
@@ -94,7 +114,7 @@ export default {
     // text-align: center;
 
     border-radius: 5px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3)
+    box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.3)
     color: whitesmoke
     height: 112px
     width:300px
@@ -107,13 +127,21 @@ export default {
         color: whitesmoke
     .panel
         display: flex
-        .pic
+        .pic-start
             width:54px
             height:54px
+            border-radius:54px
+            animation: rotate 4s linear infinite
+            animation-play-state: running;
+        .pic-stop
+            width:54px
+            height:54px
+            border-radius:54px
+
         .player
             clearDefault()
             width: 300px
-            background-color: rgba(255,255,255,0)
+            opacity: 0.2
      .control
         color: whitesmoke
         display: flex
@@ -129,4 +157,12 @@ export default {
           i
             color:#457079
             font-size: 20px
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 </style>

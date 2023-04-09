@@ -5,8 +5,15 @@
         <the-time class="clock"></the-time>
         <the-music></the-music>
       </div>
-      <the-weather></the-weather>
-      <daily-sentence></daily-sentence>
+      <div class="menu-main">
+        <div class="main-left">
+          <the-weather></the-weather>
+          <daily-sentence></daily-sentence>
+        </div>
+        <div class="main-right">
+          <hot-list></hot-list>
+        </div>
+      </div>
     </div>
     <div class="menu-right">
       <input
@@ -38,6 +45,7 @@ import TheTime from './coms/TheTime'
 import TheWeather from './coms/TheWeather'
 import TheMusic from './coms/TheMusic'
 import DailySentence from './coms/DailySentence'
+import HotList from './coms/HotList'
 export default {
   name: 'MainTodo',
   components: {
@@ -47,6 +55,7 @@ export default {
     TheWeather,
     TheMusic,
     DailySentence,
+    HotList,
   },
   data() {
     return {
@@ -120,15 +129,24 @@ export default {
           flex: 1
         .music
           flex: 1
+      .menu-main
+        display: flex
+        .main-left
+          flex:6
+
+        .main-right
+          flex:4
       // background-color pink
     .menu-right
       flex: 5
+
       // background-color: green
       .add-todo
         width: 95%
         margin:10px 15px
         padding 13px 13px 13px 36px
         background-color: rgba(255,255,255,0.3)
+        box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.3)
         font-size: 24px
         font-weight: 300
         color: #333
@@ -138,7 +156,9 @@ export default {
         clearDefault()
       .todo-list
         overflow: hidden
-        margin top 10px
+        box-shadow:2px 2px 4px 4px rgba(0, 0, 0, 0.3)
+        border-radius:5px
+        margin:3px 15px
         height 250px
         transition: all 0.3s
         &::-webkit-scrollbar

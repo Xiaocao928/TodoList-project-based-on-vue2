@@ -1,36 +1,29 @@
 <template>
   <div class="weather">
-    <div class="main">
-      <div class="location">
-        <i class="iconfont icon-dizhiguanli"></i>
-        {{ location }}
-      </div>
-      <div class="date">
-        <i class="iconfont icon-rili"></i>
-        {{ date }}
-      </div>
-      <div class="air">
-        <i class="iconfont icon-kongqizhiliangjiance"></i>
-        AQI:{{ air.aqi }} AQI等级:{{ air.aqi_level }}
-      </div>
-      <div class="wind">
-        <i class="iconfont icon-feng"></i>
-        风力:{{ wind.fengli }} 风向:{{ wind.fengxiang }}
-      </div>
-      <div class="temp">
-        <i class="iconfont icon-kongqiwendu"></i>
-        最高气温:{{ temp.high }} 最低气温:{{ temp.low }}
-      </div>
+    <div class="location">
+      <i class="iconfont icon-dizhiguanli"></i>
+      {{ location }}
     </div>
-    <div class="sub">
-      <div class="type">
-        <i class="iconfont icon-shouye"></i>
-        {{ type }}
-      </div>
-      <div class="tip">
-        <i class="iconfont icon-tooltip"></i>
-        {{ tip }}
-      </div>
+    <div class="date">
+      <i class="iconfont icon-rili"></i>
+      {{ date }}
+    </div>
+    <div class="temp">
+      <i class="iconfont icon-kongqiwendu"></i>
+      high:{{ temp.high }} low:{{ temp.low }}
+    </div>
+
+    <div class="wind">
+      <i class="iconfont icon-feng"></i>
+      风力:{{ wind.fengli }}{{ wind.fengxiang }}
+    </div>
+    <div class="type">
+      <i class="iconfont icon-shouye"></i>
+      {{ type }}
+    </div>
+    <div class="air">
+      <i class="iconfont icon-kongqizhiliangjiance"></i>
+      AQI:{{ air.aqi }} AQI等级:{{ air.aqi_level }}
     </div>
   </div>
 </template>
@@ -74,18 +67,24 @@ export default {
 </script>
 <style lang="stylus">
 @import 'http://at.alicdn.com/t/c/font_4003533_ij9xi9bhsnc.css'
-.main
+.weather
     display:flex
     flex-wrap: wrap;
+    font-size: 12px
+    box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.3)
+    border-radius: 5px
+    margin: 5px 10px
     .location
         -webkit-backdrop-filter: blur(10px);
         color:whitesmoke
+
         background-color: rgba(255, 255, 255, 0.1)
         border: 1px solid rgba(255, 255, 255, 0.1)
-        margin:10px 10px
+        margin:10px 5px
         padding:4px 8px
         border-radius: 100px;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1)
+        box-sizing: border-box
         cursor: pointer
     .date
         -webkit-backdrop-filter: blur(10px);
@@ -93,7 +92,7 @@ export default {
         background-color: rgba(255, 255, 255, 0.1)
         border: 1px solid rgba(255, 255, 255, 0.1)
         padding:4px 8px
-        margin:10px 10px
+        margin:10px 5px
         border-radius: 100px;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1)
         cursor: pointer
@@ -103,7 +102,7 @@ export default {
         background-color: rgba(255, 255, 255, 0.1)
         border: 1px solid rgba(255, 255, 255, 0.1)
         padding:4px 8px
-        margin:10px 10px
+        margin:10px 5px
         border-radius: 100px;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1)
         cursor: pointer
@@ -113,7 +112,7 @@ export default {
         background-color: rgba(255, 255, 255, 0.1)
         border: 1px solid rgba(255, 255, 255, 0.1)
         padding:4px 8px
-        margin:10px 10px
+        margin:10px 5px
         border-radius: 100px;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1)
         cursor: pointer
@@ -123,19 +122,7 @@ export default {
         background-color: rgba(255, 255, 255, 0.1)
         border: 1px solid rgba(255, 255, 255, 0.1)
         padding:4px 8px
-        margin:10px 10px
-        border-radius: 100px;
-        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1)
-        cursor: pointer
-.sub
-    display:flex
-    .tip
-        -webkit-backdrop-filter: blur(10px);
-        color:whitesmoke
-        background-color: rgba(255, 255, 255, 0.1)
-        border: 1px solid rgba(255, 255, 255, 0.1)
-        padding:4px 8px
-        margin:10px 10px
+        margin:10px 5px
         border-radius: 100px;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1)
         cursor: pointer
@@ -145,7 +132,7 @@ export default {
         background-color: rgba(255, 255, 255, 0.1)
         border: 1px solid rgba(255, 255, 255, 0.1)
         padding:4px 8px
-        margin:10px 10px
+        margin:10px 5px
         border-radius: 100px;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1)
         cursor: pointer

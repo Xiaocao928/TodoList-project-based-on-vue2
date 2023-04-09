@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <h3>每日一句</h3>
-    <p>{{ sentence.chinese }}</p>
-    <p>{{ sentence.english }}</p>
+  <div class="sentence">
+    <h3 class="text-title">每日一句:</h3>
+    <p class="zh">{{ sentence.chinese }}</p>
+    <p class="en">{{ sentence.english }}</p>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
     this.$http
       .get('https://api.vvhan.com/api/en?type=sj')
       .then(res => {
-        console.log(res)
+        //console.log(res)
         this.sentence.chinese = res.data.data.zh
         this.sentence.english = res.data.data.en
       })
@@ -29,4 +29,14 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="stylus">
+.sentence
+  width: 400px
+  height: 70px
+  margin 5px 10px
+  box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.3)
+  border-radius: 5px
+  font-size: 12px
+  font-family: 'ruhuaxingkai'
+  color: whitesmoke
+</style>

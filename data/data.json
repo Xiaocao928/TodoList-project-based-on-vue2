@@ -2,12 +2,12 @@
   "todos": [
     {
       "id": 1,
-      "content": "吃烧烤",
+      "content": "写技术文档",
       "completed": false
     },
     {
       "id": 2,
-      "content": "睡觉,sl",
+      "content": "睡觉,sleep",
       "completed": true
     },
     {

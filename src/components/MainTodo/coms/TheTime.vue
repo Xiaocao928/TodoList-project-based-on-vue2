@@ -36,8 +36,8 @@ export default {
   // font-family: 'sanjihexi'
   // text-align: center;
   padding: 1rem
-  border-radius: 5px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3)
+  border-radius: 5px
+  box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.3)
   color: whitesmoke
   height: 80px
   width:150px

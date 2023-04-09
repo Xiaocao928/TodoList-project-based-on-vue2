@@ -96,7 +96,7 @@ export default {
       transition: all 0.3s cubic-bezier(.645,.045,.355,1)
       &.completed
         text-decoration: line-through
-        color:#999
+        color:#666
     input[type="text"]
       width 100%
       margin:0px 10px
