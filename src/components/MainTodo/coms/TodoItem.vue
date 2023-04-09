@@ -70,9 +70,9 @@ export default {
     align-items: center
     margin:0 15px
     margin-top: 10px
-    padding: 3px
+    padding: 10px
     border-radius: 50px
-    font-size:24px
+    font-size:30px
     background-color: rgba(255,255,255,0.3)
     box-sizing: border-box
     &:hover

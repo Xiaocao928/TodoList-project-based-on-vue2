@@ -70,7 +70,7 @@ export default {
 .weather
     display:flex
     flex-wrap: wrap;
-    font-size: 12px
+    font-size: 16px
     box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.3)
     border-radius: 5px
     margin: 5px 10px

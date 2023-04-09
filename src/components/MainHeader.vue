@@ -14,12 +14,13 @@ export default {
 
 .main-header
   text-align:center
+  margin-top:30px
 
   h1
     margin:30px auto
     width 400px
     font-family: 'english'
-    font-size 80px
+    font-size 100px
     color:#88b2b6
     font-weight :200
     text-shadow:5px 5px 10px rgb(0,0,0,0.3)

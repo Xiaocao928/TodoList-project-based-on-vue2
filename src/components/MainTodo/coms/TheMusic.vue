@@ -117,13 +117,14 @@ export default {
     box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.3)
     color: whitesmoke
     height: 112px
-    width:300px
+    // width:300px
     margin: 10px 2px
 
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1)
     .title
         margin: 2px 2px
         font-family: 'ruhuaxingkai'
+        font-size: 20px
         color: whitesmoke
     .panel
         display: flex
@@ -156,7 +157,7 @@ export default {
           background-color: rgba(255,255,255,0)
           i
             color:#457079
-            font-size: 20px
+            font-size: 24px
 @keyframes rotate {
   from {
     transform: rotate(0deg);

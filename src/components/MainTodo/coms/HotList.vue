@@ -47,12 +47,12 @@ export default {
     box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.3)
     border-radius: 5px
 
-    font-size: 13px
+    font-size: 16px
     transition: all 0.3s
     .sort
         margin:3px 5px
     .list
-        height: 180px
+        height: 200px
 
         overflow: auto
         &::-webkit-scrollbar

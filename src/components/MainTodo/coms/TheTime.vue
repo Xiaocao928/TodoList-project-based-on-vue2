@@ -18,7 +18,7 @@ export default {
       const hours = now.getHours().toString().padStart(2, '0')
       const minutes = now.getMinutes().toString().padStart(2, '0')
       const seconds = now.getSeconds().toString().padStart(2, '0')
-      this.time = `${hours}:${minutes}`
+      this.time = `${hours}:${minutes}:${seconds}`
     },
   },
   mounted() {
@@ -40,7 +40,7 @@ export default {
   box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.3)
   color: whitesmoke
   height: 80px
-  width:150px
+  // width:150px
   margin: 10px 10px
   line-height: 80px;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1)

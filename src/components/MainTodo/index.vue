@@ -2,7 +2,7 @@
   <div class="main-todo">
     <div class="menu-left">
       <div class="menu-header">
-        <the-time class="clock"></the-time>
+        <the-time></the-time>
         <the-music></the-music>
       </div>
       <div class="menu-main">
@@ -125,17 +125,17 @@ export default {
       flex: 5
       .menu-header
         display: flex
-        .time
+        .clock
           flex: 1
         .music
           flex: 1
       .menu-main
         display: flex
         .main-left
-          flex:6
+          flex:7
 
         .main-right
-          flex:4
+          flex:3
       // background-color pink
     .menu-right
       flex: 5
@@ -158,7 +158,8 @@ export default {
         overflow: hidden
         box-shadow:2px 2px 4px 4px rgba(0, 0, 0, 0.3)
         border-radius:5px
-        margin:3px 15px
+        margin:3px 20px
+        padding:10px 0
         height 250px
         transition: all 0.3s
         &::-webkit-scrollbar

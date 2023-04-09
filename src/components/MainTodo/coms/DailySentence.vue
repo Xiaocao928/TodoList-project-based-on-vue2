@@ -31,12 +31,11 @@ export default {
 
 <style lang="stylus">
 .sentence
-  width: 400px
-  height: 70px
-  margin 5px 10px
+  margin 10px 10px
+  padding:5px 10px
   box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.3)
   border-radius: 5px
-  font-size: 12px
+  font-size: 18px
   font-family: 'ruhuaxingkai'
   color: whitesmoke
 </style>
