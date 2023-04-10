@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "json-server -w data/data.json",
+    "dev": "json-server -w data/data.json --middlewares data/batch_del.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },

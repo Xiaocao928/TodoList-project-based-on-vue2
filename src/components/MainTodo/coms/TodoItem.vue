@@ -17,7 +17,7 @@
     >
       {{ todo.content }}
     </label>
-    <button></button>
+    <button @click="$emit('del', todo.id)"></button>
   </div>
 </template>
 

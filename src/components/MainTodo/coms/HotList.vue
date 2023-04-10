@@ -27,7 +27,7 @@ export default {
       this.$http
         .get('https://api.vvhan.com/api/hotlist?type=zhihuHot')
         .then(res => {
-          console.log(res)
+          // console.log(res)
           this.lists = res.data.data
           // console.log(this.type)
         })

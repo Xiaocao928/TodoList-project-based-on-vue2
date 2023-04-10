@@ -26,14 +26,20 @@
       />
       <div class="todo-list">
         <todo-item
-          v-for="todo in todos"
+          v-for="todo in filterTodos"
           :key="todo.id"
           :todo="todo"
           @change="handleChange"
           @update="handleUpdate"
+          @del="handleDelete"
         ></todo-item>
       </div>
-      <todo-info></todo-info>
+      <todo-info
+        :total="total"
+        @change="handleTabChange"
+        @del="handleDelCompleted"
+      >
+      </todo-info>
     </div>
   </div>
 </template>
@@ -61,7 +67,23 @@ export default {
     return {
       todos: [],
       content: '',
+      state: 'all',
     }
+  },
+  computed: {
+    total() {
+      return this.todos.filter(item => item.completed == false).length
+    },
+    filterTodos() {
+      switch (this.state) {
+        case 'all':
+          return this.todos
+        case 'active':
+          return this.todos.filter(item => item.completed == false)
+        case 'completed':
+          return this.todos.filter(item => item.completed == true)
+      }
+    },
   },
   created() {
     this.getTodos()
@@ -103,6 +125,28 @@ export default {
         .patch(`http://localhost:3000/todos/${id}`, { content: value })
         .then(res => {
           this.getTodos()
+        })
+    },
+    handleDelete(id) {
+      //confirm确认框
+      const result = window.confirm('确认删除吗')
+      if (result) {
+        console.log(result)
+        this.$http.delete(`http://localhost:3000/todos/${id}`).then(res => {
+          this.getTodos()
+        })
+      }
+    },
+    handleTabChange(state) {
+      this.state = state
+    },
+    handleDelCompleted() {
+      this.$http
+        .delete('http://localhost:3000/todos?completed=true')
+        .then(res => {
+          setTimeout(() => {
+            this.getTodos()
+          }, 100)
         })
     },
   },
@@ -171,5 +215,5 @@ export default {
           background: rgba(255,255,255,0.5)
           border-radius 5px
         &:hover
-          overflow-y:scroll
+          overflow-y:auto
 </style>
