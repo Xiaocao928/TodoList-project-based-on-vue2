@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      window.localStorage.setItem('course', 'C++从入门到入土')
+      const coursename = window.localStorage.getItem('course')
+      console.log(coursename)
+      const obj = {
+        course: 'c++从入门到入土',
+        price: 120,
+      }
+      localStorage.setItem('stu', JSON.stringify(obj))
+      const str = localStorage.getItem('stu')
+
+      let stu
+      if (str) {
+        stu = JSON.parse(str)
+      } else {
+        stu = {}
+      }
+      console.log(stu)
+    </script>
+  </body>
+</html>
