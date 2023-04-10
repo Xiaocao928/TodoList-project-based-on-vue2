@@ -90,64 +90,85 @@ export default {
   },
   methods: {
     getTodos() {
-      this.$http.get('http://localhost:3000/todos').then(res => {
-        // console.log(res)
-        this.todos = res.data
-      })
+      // this.$http.get('http://localhost:3000/todos').then(res => {
+      //   // console.log(res)
+      //   this.todos = res.data
+      // })
+      let res = localStorage.getItem('todos')
+      if (!res) {
+        // 第一次读取, todos中是没有数据的
+        localStorage.setItem('todos', JSON.stringify([]))
+      } else {
+        this.todos = JSON.parse(res)
+      }
     },
     handleAdd() {
       if (this.content == '') {
         alert('请输入内容')
         return
       }
-      this.$http
-        .post('http://localhost:3000/todos', {
-          content: this.content,
-          completed: false,
-        })
-        .then(res => {
-          this.content = ''
-          this.getTodos()
-        })
+      //
+      const max = Math.max(...this.todos.map(item => item.id))
+      console.log(max)
+      this.todos.push({
+        id: max < 0 ? 1 : max + 1,
+        content: this.content,
+        completed: false,
+      })
+      this.content = ''
+
+      // 保存数据
+      localStorage.setItem('todos', JSON.stringify(this.todos))
     },
     handleChange(id, checked) {
-      this.$http
-        .patch(`http://localhost:3000/todos/${id}`, {
-          completed: checked,
-        })
-        .then(res => {
-          console.log(res)
-          this.getTodos()
-        })
+      // this.$http
+      //   .patch(`http://localhost:3000/todos/${id}`, {
+      //     completed: checked,
+      //   })
+      //   .then(res => {
+      //     console.log(res)
+      //     this.getTodos()
+      //   })
+      const todo = this.todos.find(item => item.id == id)
+      todo.completed = checked
+
+      // 保存数据
+      localStorage.setItem('todos', JSON.stringify(this.todos))
     },
     handleUpdate(id, value) {
-      this.$http
-        .patch(`http://localhost:3000/todos/${id}`, { content: value })
-        .then(res => {
-          this.getTodos()
-        })
+      const todo = this.todos.find(item => item.id == id)
+      todo.content = value
+
+      // 保存数据
+      localStorage.setItem('todos', JSON.stringify(this.todos))
     },
     handleDelete(id) {
       //confirm确认框
       const result = window.confirm('确认删除吗')
       if (result) {
-        console.log(result)
-        this.$http.delete(`http://localhost:3000/todos/${id}`).then(res => {
-          this.getTodos()
-        })
+        const index = this.todos.findIndex(item => item.id == id)
+        this.todos.splice(index, 1)
+
+        // 保存数据
+        localStorage.setItem('todos', JSON.stringify(this.todos))
       }
     },
     handleTabChange(state) {
       this.state = state
     },
     handleDelCompleted() {
-      this.$http
-        .delete('http://localhost:3000/todos?completed=true')
-        .then(res => {
-          setTimeout(() => {
-            this.getTodos()
-          }, 100)
-        })
+      // this.$http
+      //   .delete('http://localhost:3000/todos?completed=true')
+      //   .then(res => {
+      //     setTimeout(() => {
+      //       this.getTodos()
+      //     }, 100)
+      //   })
+      const filter = this.todos.filter(item => item.completed == false)
+      this.todos = filter
+
+      // 保存数据
+      localStorage.setItem('todos', JSON.stringify(this.todos))
     },
   },
 }
