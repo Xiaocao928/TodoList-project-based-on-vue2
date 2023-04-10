@@ -52,7 +52,7 @@ export default {
     .sort
         margin:3px 5px
     .list
-        height: 200px
+        height: 250px
 
         overflow: auto
         &::-webkit-scrollbar

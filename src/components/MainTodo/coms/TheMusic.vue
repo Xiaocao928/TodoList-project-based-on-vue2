@@ -104,7 +104,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import 'http://at.alicdn.com/t/c/font_4003533_idokka110x.css'
+@import 'https://at.alicdn.com/t/c/font_4003533_1q5gifvma70j.css'
 @import '~styles/mixins.styl'
 .music
 
@@ -125,6 +125,7 @@ export default {
         margin: 2px 2px
         font-family: 'ruhuaxingkai'
         font-size: 20px
+        overflow: hidden
         color: whitesmoke
     .panel
         display: flex

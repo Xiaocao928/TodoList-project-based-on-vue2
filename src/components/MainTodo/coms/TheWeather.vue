@@ -25,6 +25,10 @@
       <i class="iconfont icon-kongqizhiliangjiance"></i>
       AQI:{{ air.aqi }} AQI等级:{{ air.aqi_level }}
     </div>
+    <div class="tip">
+      <i class="iconfont icon-tooltip"></i>
+      {{ tip }}
+    </div>
   </div>
 </template>
 
@@ -66,7 +70,7 @@ export default {
 }
 </script>
 <style lang="stylus">
-@import 'http://at.alicdn.com/t/c/font_4003533_ij9xi9bhsnc.css'
+@import 'https://at.alicdn.com/t/c/font_4003533_1q5gifvma70j.css'
 .weather
     display:flex
     flex-wrap: wrap;
@@ -127,6 +131,16 @@ export default {
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1)
         cursor: pointer
     .type
+        -webkit-backdrop-filter: blur(10px);
+        color:whitesmoke
+        background-color: rgba(255, 255, 255, 0.1)
+        border: 1px solid rgba(255, 255, 255, 0.1)
+        padding:4px 8px
+        margin:10px 5px
+        border-radius: 100px;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1)
+        cursor: pointer
+    .tip
         -webkit-backdrop-filter: blur(10px);
         color:whitesmoke
         background-color: rgba(255, 255, 255, 0.1)

@@ -33,6 +33,7 @@ export default {
 .sentence
   margin 10px 10px
   padding:5px 10px
+  height:102px
   box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.3)
   border-radius: 5px
   font-size: 18px

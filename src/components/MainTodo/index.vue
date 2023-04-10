@@ -16,15 +16,19 @@
       </div>
     </div>
     <div class="menu-right">
-      <input
-        class="add-todo"
-        type="text"
-        placeholder="Press Enter to add a todo ↵"
-        autofocus
-        v-model.lazy.trim="content"
-        @keyup.enter="handleAdd"
-      />
-      <div class="todo-list">
+      <div class="todo-header">
+        <input class="select" type="checkbox" @change="handleSelectAll" />
+        <input
+          class="add-todo"
+          type="text"
+          placeholder="Press Enter to add a todo ↵"
+          autofocus
+          v-model.lazy.trim="content"
+          @keyup.enter="handleAdd"
+        />
+      </div>
+
+      <div class="todo-list" v-if="todos.length">
         <todo-item
           v-for="todo in filterTodos"
           :key="todo.id"
@@ -34,6 +38,7 @@
           @del="handleDelete"
         ></todo-item>
       </div>
+      <div class="no-todo" v-else>无待办事项</div>
       <todo-info
         :total="total"
         @change="handleTabChange"
@@ -153,8 +158,8 @@ export default {
         localStorage.setItem('todos', JSON.stringify(this.todos))
       }
     },
-    handleTabChange(state) {
-      this.state = state
+    handleTabChange(s) {
+      this.state = s
     },
     handleDelCompleted() {
       // this.$http
@@ -168,6 +173,13 @@ export default {
       this.todos = filter
 
       // 保存数据
+      localStorage.setItem('todos', JSON.stringify(this.todos))
+    },
+    handleSelectAll(event) {
+      const isChecked = event.target.checked
+      this.todos.forEach(todo => {
+        todo.completed = isChecked
+      })
       localStorage.setItem('todos', JSON.stringify(this.todos))
     },
   },
@@ -205,20 +217,35 @@ export default {
     .menu-right
       flex: 5
 
-      // background-color: green
-      .add-todo
-        width: 95%
-        margin:10px 15px
-        padding 13px 13px 13px 36px
-        background-color: rgba(255,255,255,0.3)
-        box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.3)
-        font-size: 24px
-        font-weight: 300
-        color: #333
-        border-radius: 50px
-        font-family:'Alkatra', cursive
-        box-sizing: border-box
-        clearDefault()
+      .todo-header
+        display: flex
+        align-items:center
+        .select
+          clearDefault()
+          margin: 0 5px
+          padding-left:20px
+          padding-right:5px
+          width 40px
+          height 32px
+          &::after
+            content: url('~images/unchecked32.svg')
+            margin: 0 -6px
+          &:checked::after
+            content: url('~images/checked32.svg')
+            margin: 0 -6px
+        .add-todo
+          width: 95%
+          margin:10px 15px
+          padding 13px 13px 13px 36px
+          background-color: rgba(255,255,255,0.3)
+          box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.3)
+          font-size: 24px
+          font-weight: 300
+          color: #333
+          border-radius: 50px
+          font-family:'Alkatra', cursive
+          box-sizing: border-box
+          clearDefault()
       .todo-list
         overflow: hidden
         box-shadow:2px 2px 4px 4px rgba(0, 0, 0, 0.3)
@@ -237,4 +264,16 @@ export default {
           border-radius 5px
         &:hover
           overflow-y:auto
+      .no-todo
+        box-shadow:2px 2px 4px 4px rgba(0, 0, 0, 0.3)
+        border-radius:5px
+        margin:3px 20px
+        padding:10px 0
+        height 250px
+        font-size: 55px
+        font-weight: 500
+        line-height: 250px
+        text-align: center
+        font-family: 'sanjihexi'
+        color:whitesmoke
 </style>

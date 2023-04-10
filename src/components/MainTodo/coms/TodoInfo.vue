@@ -46,13 +46,15 @@ export default {
   justify-content: space-between
   align-items: center
   height:30px
-  margin-top:10px
-  padding:5px 10px
+  margin:10px 20px
+  padding:12px 10px
+  box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.3)
+  border-radius: 5px
   font-family:'sanjihexi'
   font-size: 25px
   .total
     color:whitesmoke
-    margin-left:35px
+    margin-left:10px
     font-size: 35px
   .tab
     display:flex
