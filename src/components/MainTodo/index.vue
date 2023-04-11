@@ -17,7 +17,12 @@
     </div>
     <div class="menu-right">
       <div class="todo-header">
-        <input class="select" type="checkbox" @change="handleSelectAll" />
+        <input
+          class="select"
+          type="checkbox"
+          :checked="isAllCompleted"
+          @change="handleSelectAll"
+        />
         <input
           class="add-todo"
           type="text"
@@ -29,14 +34,16 @@
       </div>
 
       <div class="todo-list" v-if="todos.length">
-        <todo-item
-          v-for="todo in filterTodos"
-          :key="todo.id"
-          :todo="todo"
-          @change="handleChange"
-          @update="handleUpdate"
-          @del="handleDelete"
-        ></todo-item>
+        <draggable v-model="todos">
+          <todo-item
+            v-for="todo in filterTodos"
+            :key="todo.id"
+            :todo="todo"
+            @change="handleChange"
+            @update="handleUpdate"
+            @del="handleDelete"
+          ></todo-item>
+        </draggable>
       </div>
       <div class="no-todo" v-else>无待办事项</div>
       <todo-info
@@ -57,6 +64,7 @@ import TheWeather from './coms/TheWeather'
 import TheMusic from './coms/TheMusic'
 import DailySentence from './coms/DailySentence'
 import HotList from './coms/HotList'
+import draggable from 'vuedraggable'
 export default {
   name: 'MainTodo',
   components: {
@@ -67,6 +75,7 @@ export default {
     TheMusic,
     DailySentence,
     HotList,
+    draggable,
   },
   data() {
     return {
@@ -88,6 +97,9 @@ export default {
         case 'completed':
           return this.todos.filter(item => item.completed == true)
       }
+    },
+    isAllCompleted() {
+      return this.todos.every(item => item.completed)
     },
   },
   created() {
@@ -176,10 +188,12 @@ export default {
       localStorage.setItem('todos', JSON.stringify(this.todos))
     },
     handleSelectAll(event) {
+      console.log('进来了')
       const isChecked = event.target.checked
       this.todos.forEach(todo => {
         todo.completed = isChecked
       })
+
       localStorage.setItem('todos', JSON.stringify(this.todos))
     },
   },
@@ -278,4 +292,13 @@ export default {
         text-align: center
         font-family: 'sanjihexi'
         color:whitesmoke
+// @media screen and (max-width:1380px) {
+// .main-todo
+//     width:80%
+//     flex-direction: column-reverse
+// }
+@media screen and (max-width:1380px)
+  .main-todo
+    width:70%
+    flex-direction: column-reverse
 </style>

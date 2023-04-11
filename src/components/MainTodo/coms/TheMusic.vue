@@ -107,19 +107,11 @@ export default {
 @import 'https://at.alicdn.com/t/c/font_4003533_1q5gifvma70j.css'
 @import '~styles/mixins.styl'
 .music
-
-
-
-    // font-family: 'sanjihexi'
-    // text-align: center;
-
     border-radius: 5px;
     box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.3)
     color: whitesmoke
     height: 112px
-    // width:300px
     margin: 10px 2px
-
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1)
     .title
         margin: 2px 2px
@@ -167,4 +159,7 @@ export default {
     transform: rotate(360deg);
   }
 }
+@media screen and (max-width:1380px)
+  .music
+    margin-right:10px
 </style>

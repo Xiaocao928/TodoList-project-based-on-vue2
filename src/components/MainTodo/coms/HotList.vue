@@ -68,4 +68,7 @@ export default {
             .content
                 color:whitesmoke
                 text-decoration: none
+@media screen and (max-width:1380px)
+  .hotlist
+    margin-right:10px
 </style>
