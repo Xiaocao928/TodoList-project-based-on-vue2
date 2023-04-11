@@ -105,7 +105,7 @@ export default {
       font-family: 'sanjihexi'
       background-color: rgba(255,255,255,0.3)
       border-radius: 50px
-      font-size: 19px
+      font-size: 25px
       line-height: 20px
     button
       width: 40px

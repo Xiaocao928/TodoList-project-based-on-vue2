@@ -219,7 +219,12 @@ export default {
 
       .todo-header
         display: flex
+        width: 95%
+        margin:14px 12px
+        padding:5px 5px
         align-items:center
+        border-radius: 50px
+        box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.3)
         .select
           clearDefault()
           margin: 0 5px
@@ -229,20 +234,17 @@ export default {
           height 32px
           &::after
             content: url('~images/unchecked3.svg')
-
           &:checked::after
             content: url('~images/checked3.svg')
-
         .add-todo
-          width: 95%
-          margin:10px 15px
-          padding 13px 13px 13px 36px
+          flex:1
+          padding 10px 16px 10px 36px
           background-color: rgba(255,255,255,0.3)
-          box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.3)
+          margin:0 15px
+          border-radius: 5px
           font-size: 24px
           font-weight: 300
           color: #333
-          border-radius: 50px
           font-family:'Alkatra', cursive
           box-sizing: border-box
           clearDefault()
