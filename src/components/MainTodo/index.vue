@@ -228,11 +228,11 @@ export default {
           width 40px
           height 32px
           &::after
-            content: url('~images/unchecked32.svg')
-            margin: 0 -6px
+            content: url('~images/unchecked3.svg')
+
           &:checked::after
-            content: url('~images/checked32.svg')
-            margin: 0 -6px
+            content: url('~images/checked3.svg')
+
         .add-todo
           width: 95%
           margin:10px 15px
